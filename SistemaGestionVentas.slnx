@@ -2,8 +2,8 @@
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
   </Folder>
-  <Project Path="SistemaGestionVentas.Data/SistemaGestionVentas.Data.csproj" />
-  <Project Path="SistemaGestionVentas.Dominio/SistemaGestionVentas.Dominio.csproj" />
-  <Project Path="SistemaGestionVentas.Negocio/SistemaGestionVentas.Negocio.csproj" />
-  <Project Path="SistemaGestionVentas.Web/SistemaGestionVentas.Web.csproj" />
+  <Project Path="SistemaGestionVentas.Data/SistemaGestionVentas.Data.csproj" Id="89a910a5-aae9-4f29-8ba3-ab01c775d164" />
+  <Project Path="SistemaGestionVentas.Dominio/SistemaGestionVentas.Dominio.csproj" Id="69604412-f20d-432e-8091-d3a4c6dbacb9" />
+  <Project Path="SistemaGestionVentas.Negocio/SistemaGestionVentas.Negocio.csproj" Id="56bc56ad-210e-4482-856e-a37eb3fa5ec9" />
+  <Project Path="SistemaGestionVentas.Web/SistemaGestionVentas.Web.csproj" Id="5065ba41-5af4-423c-ab8d-0dd26cc14bda" />
 </Solution>
