@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+  </Folder>
+  <Project Path="SistemaGestionVentas.Data/SistemaGestionVentas.Data.csproj" />
+  <Project Path="SistemaGestionVentas.Dominio/SistemaGestionVentas.Dominio.csproj" />
+  <Project Path="SistemaGestionVentas.Negocio/SistemaGestionVentas.Negocio.csproj" />
+  <Project Path="SistemaGestionVentas.Web/SistemaGestionVentas.Web.csproj" />
+</Solution>
