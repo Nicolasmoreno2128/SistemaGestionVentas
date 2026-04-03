@@ -231,13 +231,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SistemaGestionVentas.Data\SistemaGestionVentas.Data.csproj">
+      <Project>{89a910a5-aae9-4f29-8ba3-ab01c775d164}</Project>
+      <Name>SistemaGestionVentas.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SistemaGestionVentas.Dominio\SistemaGestionVentas.Dominio.csproj">
       <Project>{69604412-f20d-432e-8091-d3a4c6dbacb9}</Project>
       <Name>SistemaGestionVentas.Dominio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SistemaGestionVentas.Negocio\SistemaGestionVentas.Negocio.csproj">
-      <Project>{56bc56ad-210e-4482-856e-a37eb3fa5ec9}</Project>
-      <Name>SistemaGestionVentas.Negocio</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

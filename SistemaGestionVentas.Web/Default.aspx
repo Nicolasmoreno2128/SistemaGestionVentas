@@ -9,9 +9,12 @@
 <body>
     <form id="form1" runat="server">
         <div>
+        <h1>Hola mundo</h1>
 
-            <h1>Hola mundo</h1>
+            <asp:GridView ID="dgvProductos" runat="server" AutoGenerateColumns="true"></asp:GridView>
         </div>
     </form>
+    
+
 </body>
 </html>
