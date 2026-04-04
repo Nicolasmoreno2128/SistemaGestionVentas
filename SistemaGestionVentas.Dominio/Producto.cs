@@ -23,7 +23,7 @@ namespace SistemaGestionVentas.Dominio
         public string Medida { get; set; }
         public bool Estado { get; set; }
 
-       // public Marca marca { get; set; }
-       // public Categoria categoria { get; set; }
+       public Marca Marca { get; set; }
+       public Categoria Categoria { get; set; }
     }
 }

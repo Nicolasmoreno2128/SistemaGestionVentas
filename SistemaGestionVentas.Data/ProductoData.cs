@@ -23,7 +23,10 @@ namespace SistemaGestionVentas.Data
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=SistemaGestionVentasBD; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT IdProducto, Nombre, Descripcion, UrlImagen, Precio, Stock, IdMarca, IdCategoria, Medida, Estado FROM Producto";
+                comando.CommandText = "SELECT p.IdProducto, p.Nombre, p.Descripcion, p.UrlImagen, p.Precio, p.Stock, p.IdMarca, m.Nombre AS Marca, p.IdCategoria, c.Nombre AS Categoria, p.Medida, p.Estado FROM PRODUCTO AS p " +
+                    "INNER JOIN MARCA AS m ON p.IdMarca = m.IdMarca " +
+                    "INNER JOIN CATEGORIA AS c ON p.IdCategoria = c.IdCategoria";
+
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -42,9 +45,15 @@ namespace SistemaGestionVentas.Data
                         producto.UrlImagen = (string)lector["UrlImagen"];
                     producto.Precio = (decimal) lector["Precio"];
                     producto.Stock = (int) lector["Stock"];
-                    producto.IdMarca = (int) lector["IdMarca"];
-                    producto.IdCategoria = (int)lector["IdCategoria"];
                     
+                    producto.IdMarca = (int)lector["IdMarca"];
+                    producto.Marca = new Marca();
+                    producto.Marca.Nombre = (string)lector["Marca"];
+
+                    producto.IdCategoria = (int)lector["IdCategoria"];
+                    producto.Categoria = new Categoria();
+                    producto.Categoria.Nombre = (String) lector["Categoria"];
+
                     if (!(lector["Medida"] is DBNull))
                         producto.Medida = (string) lector["Medida"];
                     producto.Estado = (bool) lector["Estado"];
