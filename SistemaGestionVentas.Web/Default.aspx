@@ -11,7 +11,7 @@
         <div>
         <h1>Hola mundo</h1>
 
-            <asp:GridView ID="dgvProductos" runat="server" AutoGenerateColumns="false" CssClass="table">
+            <asp:GridView ID="dgvProductos" runat="server" AutoGenerateColumns="false" CssClass="table" OnRowCommand="dgvProductos_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                     <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
@@ -20,6 +20,13 @@
                     <asp:BoundField DataField="Medida" HeaderText="Medida" />
                     <asp:BoundField DataField="Marca.Nombre" HeaderText="Marca" />
                     <asp:BoundField DataField="Categoria.Nombre" HeaderText="Categoria" />
+
+                    <asp:TemplateField HeaderText="Acciones">
+                        <ItemTemplate>
+                            <asp:Button ID="btnModificar" runat="server" Text="Modificar" CommandName="Modificar" CommandArgument='<%# Eval("IdProducto") %>' />
+                            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CommandName="Eliminar" CommandArgument='<%# Eval("IdProducto") %>' />
+                         </ItemTemplate>
+                    </asp:TemplateField>
 
 
                 </Columns>

@@ -22,5 +22,21 @@ namespace SistemaGestionVentas.Web
             }
 
         }
+ 
+    protected void dgvProductos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Modificar")
+            {
+                string id = e.CommandArgument.ToString();
+                Response.Redirect("FormularioProducto.aspx?id=" + id);
+            }
+            else if (e.CommandName == "Eliminar")
+            {
+                string id = e.CommandArgument.ToString();
+                Response.Write("Eliminar producto ID: " + id);
+            }
+        }
     }
+
+
 }

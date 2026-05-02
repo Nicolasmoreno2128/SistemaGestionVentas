@@ -68,10 +68,64 @@ namespace SistemaGestionVentas.Data
                 throw;
             }
 
-
-
-
             return lista;
+        }
+        public Producto ObtenerPorID (int id)
+        {
+
+            Producto producto = new Producto();
+
+            SqlConnection conexion = new SqlConnection();
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader lector;
+
+            try
+            {
+                conexion.ConnectionString = "server=.\\SQLEXPRESS; database=SistemaGestionVentasBD; integrated security=true";
+                comando.CommandType = System.Data.CommandType.Text;
+                comando.CommandText = "Select p.IdProducto, p.Nombre, p.Descripcion, p.UrlImagen, p.Precio, p.Stock, p.IdMarca, m.Nombre AS Marca, p.IdCategoria, c.Nombre AS Categoria, p.Medida, p.Estado FROM PRODUCTO AS p " +
+                    "INNER JOIN MARCA AS m ON p.IdMarca = m.IdMarca " +
+                    "INNER JOIN CATEGORIA AS c ON p.IdCategoria = c.IdCategoria " +
+                    "WHERE IdProducto = @id";
+                comando.Connection = conexion;
+
+                // Add parameter and execute reader after opening the connection
+                comando.Parameters.AddWithValue("@id", id);
+
+                conexion.Open();
+                lector = comando.ExecuteReader();
+
+                if (lector.Read())
+                {
+                    producto.IdProducto = (int)lector["IdProducto"];
+                    producto.Nombre = (string)lector["Nombre"];
+
+                    if (!(lector["Descripcion"] is DBNull))
+                        producto.Descripcion = (string)lector["Descripcion"];
+
+                    if (!(lector["UrlImagen"] is DBNull))
+                        producto.UrlImagen = (string)lector["UrlImagen"];
+
+                    producto.Precio = (decimal)lector["Precio"];
+                    producto.Stock = (int)lector["Stock"];
+                    producto.IdMarca = (int)lector["IdMarca"];
+                    producto.IdCategoria = (int)lector["IdCategoria"];
+
+                    if (!(lector["Medida"] is DBNull))
+                        producto.Medida = (string)lector["Medida"];
+
+                    producto.Estado = (bool)lector["Estado"];
+                }
+
+                conexion.Close();
+                return producto;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
     }
 }
