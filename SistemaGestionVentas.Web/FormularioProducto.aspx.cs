@@ -13,6 +13,19 @@ namespace SistemaGestionVentas.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            MarcaData marcaData = new MarcaData();
+            ddlMarca.DataSource = marcaData.Listar();
+            ddlMarca.DataTextField = "Nombre";
+            ddlMarca.DataValueField = "IdMarca";
+            ddlMarca.DataBind();
+
+            CategoriaData categoriaData = new CategoriaData();
+            ddlCategoria.DataSource = categoriaData.Listar();
+            ddlCategoria.DataTextField = "Nombre";
+            ddlCategoria.DataValueField = "IdCategoria";
+            ddlCategoria.DataBind();
+
             if (!IsPostBack)
             {
                 string id = Request.QueryString["id"];
@@ -29,6 +42,9 @@ namespace SistemaGestionVentas.Web
                     txtPrecio.Text = producto.Precio.ToString();
                     txtStock.Text = producto.Stock.ToString();
                     txtMedida.Text = producto.Medida;
+                    
+                    ddlMarca.SelectedValue = producto.IdMarca.ToString();
+                    ddlCategoria.SelectedValue = producto.IdCategoria.ToString();
 
                     Response.Write("Estoy modificando el producto ID: " + id);
                 }
