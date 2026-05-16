@@ -127,5 +127,41 @@ namespace SistemaGestionVentas.Data
             }
 
         }
+        public void ModificarProducto(Producto producto)
+        {
+            SqlConnection conexion = new SqlConnection();
+            SqlCommand comando = new SqlCommand();
+
+
+            try
+            {
+                conexion.ConnectionString = "server=.\\SQLEXPRESS; database=SistemaGestionVentasBD; integrated security=true";
+                comando.CommandType = System.Data.CommandType.Text;
+                comando.CommandText = "UPDATE PRODUCTO SET Nombre = @nombre, Descripcion = @descripcion, UrlImagen = @urlImagen, Precio = @precio, Stock = @stock, IdMarca = @idMarca, IdCategoria = @idCategoria, Medida = @medida WHERE IdProducto = @idProducto";
+
+                comando.Parameters.AddWithValue("@nombre", producto.Nombre);
+                comando.Parameters.AddWithValue("@descripcion", producto.Descripcion);
+                comando.Parameters.AddWithValue("@urlImagen", producto.UrlImagen);
+                comando.Parameters.AddWithValue("@precio", producto.Precio);
+                comando.Parameters.AddWithValue("@stock", producto.Stock);
+                comando.Parameters.AddWithValue("@idMarca", producto.IdMarca);
+                comando.Parameters.AddWithValue("@idCategoria", producto.IdCategoria);
+                comando.Parameters.AddWithValue("@medida", producto.Medida);
+                comando.Parameters.AddWithValue("@idProducto", producto.IdProducto);
+
+                comando.Connection = conexion;
+                conexion.Open();
+                comando.ExecuteNonQuery();
+                conexion.Close();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
     }
 }

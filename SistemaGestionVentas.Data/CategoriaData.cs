@@ -32,7 +32,7 @@ namespace SistemaGestionVentas.Data
                 while (lector.Read())
                 {
                     Categoria categoria = new Categoria();
-                    categoria.IdCategoria = (int)lector["IdMarca"];
+                    categoria.IdCategoria = (int)lector["IdCategoria"];
                     categoria.Nombre = (string)lector["Nombre"];
 
                     if (!(lector["Descripcion"] is DBNull))

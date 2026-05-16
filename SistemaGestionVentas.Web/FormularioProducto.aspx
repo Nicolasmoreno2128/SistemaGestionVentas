@@ -45,7 +45,7 @@
 
 
 
-            <asp:Button ID="btnGuardar" runat="server" Text="Guardar" />
+            <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
         </div>
     </form>
 </body>

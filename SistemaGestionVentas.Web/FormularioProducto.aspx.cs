@@ -42,7 +42,7 @@ namespace SistemaGestionVentas.Web
                     txtPrecio.Text = producto.Precio.ToString();
                     txtStock.Text = producto.Stock.ToString();
                     txtMedida.Text = producto.Medida;
-                    
+
                     ddlMarca.SelectedValue = producto.IdMarca.ToString();
                     ddlCategoria.SelectedValue = producto.IdCategoria.ToString();
 
@@ -53,6 +53,27 @@ namespace SistemaGestionVentas.Web
                     Response.Write("Estoy dando de alta un producto nuevo");
                 }
             }
+
+        }
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            string id = Request.QueryString["id"];
+            Producto producto = new Producto();
+
+            producto.IdProducto = int.Parse(id);
+            producto.Nombre = txtNombre.Text;
+            producto.Descripcion = txtDescripcion.Text;
+            producto.UrlImagen = txtUrlImagen.Text;
+            producto.Precio = decimal.Parse(txtPrecio.Text);
+            producto.Stock = int.Parse(txtStock.Text);
+            producto.Medida = txtMedida.Text;
+            producto.IdMarca = int.Parse(ddlMarca.SelectedValue);
+            producto.IdCategoria = int.Parse(ddlCategoria.SelectedValue);
+
+            ProductoData data = new ProductoData();
+            data.ModificarProducto(producto);
+
+            Response.Redirect("Default.aspx");
 
         }
     }
