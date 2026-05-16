@@ -1,44 +1,52 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SistemaGestionVentas.Web.Default" %>
+﻿<%@ Page Title="Sistema de Gestión de Ventas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SistemaGestionVentas.Web.Default" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Hola hola</title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-        <h1>Hola mundo</h1>
+    <div class="container mt-4">
 
-            <asp:GridView ID="dgvProductos" runat="server" AutoGenerateColumns="false" CssClass="table" OnRowCommand="dgvProductos_RowCommand">
-                <Columns>
-                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
-                    <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
-                    <asp:BoundField DataField="Precio" HeaderText="Precio" DataFormatString="{0:C}" HtmlEncode="false" />
-                    <asp:BoundField DataField="Stock" HeaderText="Stock" />
-                    <asp:BoundField DataField="Medida" HeaderText="Medida" />
-                    <asp:BoundField DataField="Marca.Nombre" HeaderText="Marca" />
-                    <asp:BoundField DataField="Categoria.Nombre" HeaderText="Categoria" />
-
-                    <asp:TemplateField HeaderText="Acciones">
-                        <ItemTemplate>
-                            <asp:Button ID="btnModificar" runat="server" Text="Modificar" CommandName="Modificar" CommandArgument='<%# Eval("IdProducto") %>' />
-                            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CommandName="Eliminar" CommandArgument='<%# Eval("IdProducto") %>' />
-                         </ItemTemplate>
-                    </asp:TemplateField>
+        <h1 class="mb-4">Listado de productos</h1>
 
 
-                </Columns>
+        <a href="FormularioProducto.aspx" class="btn btn-primary mb-3">Nuevo Producto</a>
+        <asp:GridView 
+            ID="dgvProductos" 
+            runat="server" 
+            AutoGenerateColumns="false" 
+            CssClass="table table-striped table-bordered table-hover" 
+            OnRowCommand="dgvProductos_RowCommand">
 
+            <Columns>
+                <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
+                <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
+                <asp:BoundField DataField="Precio" HeaderText="Precio" DataFormatString="{0:C}" HtmlEncode="false" />
+                <asp:BoundField DataField="Stock" HeaderText="Stock" />
+                <asp:BoundField DataField="Medida" HeaderText="Medida" />
+                <asp:BoundField DataField="Marca.Nombre" HeaderText="Marca" />
+                <asp:BoundField DataField="Categoria.Nombre" HeaderText="Categoría" />
 
+                <asp:TemplateField HeaderText="Acciones">
+                    <ItemTemplate>
+                        <asp:Button 
+                            ID="btnModificar" 
+                            runat="server" 
+                            Text="Modificar" 
+                            CommandName="Modificar" 
+                            CommandArgument='<%# Eval("IdProducto") %>' 
+                            CssClass="btn btn-warning btn-sm me-1" />
 
+                        <asp:Button 
+                            ID="btnEliminar" 
+                            runat="server" 
+                            Text="Eliminar" 
+                            CommandName="Eliminar" 
+                            CommandArgument='<%# Eval("IdProducto") %>' 
+                            CssClass="btn btn-danger btn-sm" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
 
+        </asp:GridView>
 
-            </asp:GridView>
-        </div>
-    </form>
-    
+    </div>
 
-</body>
-</html>
+</asp:Content>
