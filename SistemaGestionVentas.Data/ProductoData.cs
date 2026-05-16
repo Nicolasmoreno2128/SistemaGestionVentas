@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Configuration;
 using System.Text;
 using System.Threading.Tasks;
 using SistemaGestionVentas.Dominio;
@@ -160,6 +161,42 @@ namespace SistemaGestionVentas.Data
 
                 throw;
             }
+
+        }
+        public void AgregarProducto (Producto producto)
+        {
+
+            SqlConnection conexion = new SqlConnection();
+            SqlCommand comando = new SqlCommand();
+
+            try
+            {
+                conexion.ConnectionString = "server=.\\SQLEXPRESS; database=SistemaGestionVentasBD; integrated security=true";
+                comando.CommandType = System.Data.CommandType.Text;
+                comando.CommandText = "INSERT INTO PRODUCTO (Nombre, Descripcion, UrlImagen, Precio, Stock, IdMarca, IdCategoria, Medida) " +
+                    "VALUES (@Nombre, @Descripcion, @UrlImagen, @Precio, @Stock, @IdMarca, @IdCategoria, @Medida)";
+                
+                comando.Parameters.AddWithValue("@Nombre", producto.Nombre);
+                comando.Parameters.AddWithValue("@Descripcion", producto.Descripcion);
+                comando.Parameters.AddWithValue("@UrlImagen", producto.UrlImagen);
+                comando.Parameters.AddWithValue("@Precio", producto.Precio);
+                comando.Parameters.AddWithValue("@Stock", producto.Stock);
+                comando.Parameters.AddWithValue("@IdMarca", producto.IdMarca);
+                comando.Parameters.AddWithValue("@IdCategoria", producto.IdCategoria);
+                comando.Parameters.AddWithValue("@Medida", producto.Medida);
+                
+                comando.Connection = conexion;
+                conexion.Open();
+                comando.ExecuteNonQuery();
+                conexion.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
 
 
         }

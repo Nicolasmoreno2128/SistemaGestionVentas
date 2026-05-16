@@ -57,22 +57,33 @@ namespace SistemaGestionVentas.Web
         }
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            string id = Request.QueryString["id"];
+            
+            
+            string id = Request.QueryString["id"]; 
             Producto producto = new Producto();
 
-            producto.IdProducto = int.Parse(id);
-            producto.Nombre = txtNombre.Text;
-            producto.Descripcion = txtDescripcion.Text;
-            producto.UrlImagen = txtUrlImagen.Text;
-            producto.Precio = decimal.Parse(txtPrecio.Text);
-            producto.Stock = int.Parse(txtStock.Text);
-            producto.Medida = txtMedida.Text;
-            producto.IdMarca = int.Parse(ddlMarca.SelectedValue);
-            producto.IdCategoria = int.Parse(ddlCategoria.SelectedValue);
 
-            ProductoData data = new ProductoData();
-            data.ModificarProducto(producto);
+                producto.Nombre = txtNombre.Text;
+                producto.Descripcion = txtDescripcion.Text;
+                producto.UrlImagen = txtUrlImagen.Text;
+                producto.Precio = decimal.Parse(txtPrecio.Text);
+                producto.Stock = int.Parse(txtStock.Text);
+                producto.Medida = txtMedida.Text;
+                producto.IdMarca = int.Parse(ddlMarca.SelectedValue);
+                producto.IdCategoria = int.Parse(ddlCategoria.SelectedValue);
 
+                ProductoData data = new ProductoData();
+
+            if (id != null)
+            {
+                producto.IdProducto = int.Parse(id);
+                data.ModificarProducto(producto);
+
+            }
+            else { 
+            
+               data.AgregarProducto(producto);
+            }
             Response.Redirect("Default.aspx");
 
         }
