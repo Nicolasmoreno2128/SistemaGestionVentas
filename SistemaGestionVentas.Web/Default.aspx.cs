@@ -33,7 +33,12 @@ namespace SistemaGestionVentas.Web
             else if (e.CommandName == "Eliminar")
             {
                 string id = e.CommandArgument.ToString();
+                ProductoData data = new ProductoData();
+                data.EliminarProductoLogico(int.Parse(id));
+
                 Response.Write("Eliminar producto ID: " + id);
+                Response.Redirect("Default.aspx");
+
             }
         }
     }

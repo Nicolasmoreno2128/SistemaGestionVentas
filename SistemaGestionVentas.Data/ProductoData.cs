@@ -26,7 +26,8 @@ namespace SistemaGestionVentas.Data
                 comando.CommandType = System.Data.CommandType.Text;
                 comando.CommandText = "SELECT p.IdProducto, p.Nombre, p.Descripcion, p.UrlImagen, p.Precio, p.Stock, p.IdMarca, m.Nombre AS Marca, p.IdCategoria, c.Nombre AS Categoria, p.Medida, p.Estado FROM PRODUCTO AS p " +
                     "INNER JOIN MARCA AS m ON p.IdMarca = m.IdMarca " +
-                    "INNER JOIN CATEGORIA AS c ON p.IdCategoria = c.IdCategoria";
+                    "INNER JOIN CATEGORIA AS c ON p.IdCategoria = c.IdCategoria" +
+                    " WHERE p.Estado = 1";
 
                 comando.Connection = conexion;
 
@@ -197,6 +198,33 @@ namespace SistemaGestionVentas.Data
             }
 
 
+
+
+        }
+        public void EliminarProductoLogico (int IdProducto)
+        {
+            SqlConnection conexion = new SqlConnection();
+            SqlCommand comando = new SqlCommand();
+
+            try
+            {
+                conexion.ConnectionString = "server=.\\SQLEXPRESS; database=SistemaGestionVentasBD; integrated security=true";
+                comando.CommandType = System.Data.CommandType.Text;
+                comando.CommandText = "UPDATE PRODUCTO SET Estado=0 WHERE IdProducto = @IdProducto";
+
+                comando.Parameters.AddWithValue("@IdProducto", IdProducto);
+
+                comando.Connection = conexion;
+                conexion.Open();
+                comando.ExecuteNonQuery();
+                conexion.Close();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
 
         }
