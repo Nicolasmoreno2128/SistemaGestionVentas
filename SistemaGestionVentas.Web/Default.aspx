@@ -4,10 +4,16 @@
 
     <div class="container mt-4">
 
-        <h1 class="mb-4">Listado de productos</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="fw-bold mb-0">Productos</h1>
+        <small class="text-muted">Gestión de productos del sistema</small>
+    </div>
 
-
-        <a href="FormularioProducto.aspx" class="btn btn-primary mb-3">Nuevo Producto</a>
+    <a href="FormularioProducto.aspx" class="btn btn-primary">
+        Nuevo Producto
+    </a>
+</div>
         <asp:GridView 
             ID="dgvProductos" 
             runat="server" 
@@ -16,6 +22,17 @@
             OnRowCommand="dgvProductos_RowCommand">
 
             <Columns>
+                <asp:TemplateField HeaderText="Imagen">
+                    <ItemTemplate>
+
+                        <a href='<%# Eval("UrlImagen") %>' target="_blank">
+
+                            <img src='<%# Eval("UrlImagen") %>' 
+                                 alt="Imagen producto"
+                                 style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px; cursor:pointer;" />
+                        </a>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                 <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
                 <asp:BoundField DataField="Precio" HeaderText="Precio" DataFormatString="{0:C}" HtmlEncode="false" />
