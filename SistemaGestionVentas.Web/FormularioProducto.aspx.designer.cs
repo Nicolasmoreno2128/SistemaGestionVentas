@@ -69,6 +69,15 @@ namespace SistemaGestionVentas.Web
         protected global::System.Web.UI.WebControls.TextBox txtUrlImagen;
 
         /// <summary>
+        /// imgProducto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgProducto;
+
+        /// <summary>
         /// lblPrecio control.
         /// </summary>
         /// <remarks>

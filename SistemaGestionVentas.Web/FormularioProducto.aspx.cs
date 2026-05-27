@@ -39,6 +39,7 @@ namespace SistemaGestionVentas.Web
                     txtNombre.Text = producto.Nombre;
                     txtDescripcion.Text = producto.Descripcion;
                     txtUrlImagen.Text = producto.UrlImagen;
+                    imgProducto.ImageUrl = producto.UrlImagen;
                     txtPrecio.Text = producto.Precio.ToString();
                     txtStock.Text = producto.Stock.ToString();
                     txtMedida.Text = producto.Medida;

@@ -21,7 +21,10 @@
 
                 <div class="mb-3">
                     <asp:Label ID="lblUrlImagen" runat="server" Text="URL de imagen" CssClass="form-label"></asp:Label>
-                    <asp:TextBox ID="txtUrlImagen" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtUrlImagen" runat="server" CssClass="form-control" ClientIDMode="Static" onkeyup="actualizarPreviewImagen()" />
+                </div>
+                <div class="mb-3">
+                    <asp:Image ID="imgProducto" runat="server" CssClass="img-thumbnail mt-2" Width="200px" ClientIDMode="Static" />
                 </div>
 
                 <div class="row">
@@ -62,5 +65,13 @@
         </div>
 
     </div>
+            <script>
+                function actualizarPreviewImagen() {
+                    var url = document.getElementById("txtUrlImagen").value;
+                    var imagen = document.getElementById("imgProducto");
+
+                    imagen.src = url;
+                }
+        </script>
 
 </asp:Content>
