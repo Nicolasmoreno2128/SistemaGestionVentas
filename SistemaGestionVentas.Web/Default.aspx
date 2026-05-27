@@ -57,7 +57,8 @@
                             Text="Eliminar" 
                             CommandName="Eliminar" 
                             CommandArgument='<%# Eval("IdProducto") %>' 
-                            CssClass="btn btn-danger btn-sm" />
+                            CssClass="btn btn-danger btn-sm"
+                            OnClientClick="return confirm('¿Seguro que desea eliminar este producto?');"/>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
