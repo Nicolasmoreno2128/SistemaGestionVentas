@@ -1,16 +1,45 @@
 ﻿/* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
+
 .body-content {
     margin-top: 15px;
     padding-left: 15px;
     padding-right: 15px;
+}
+body {
+    background-color: #F8FAFC;
+}
+
+.navbar {
+    background-color: #1E293B !important;
+}
+
+.btn-primary {
+    background-color: #2563EB;
+    border-color: #2563EB;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(37,99,235,.25);
+}
+
+    .btn-primary:hover {
+        background-color: #1D4ED8;
+        border-color: #1D4ED8;
+    }
+
+.card {
+    border: none;
+    border-radius: 12px;
+}
+
+.table {
+    background-color: white;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: none;
 }
 
 /* Responsive: Portrait tablets and up */

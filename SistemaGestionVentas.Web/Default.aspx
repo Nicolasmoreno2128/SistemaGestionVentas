@@ -49,7 +49,7 @@
                             Text="Modificar" 
                             CommandName="Modificar" 
                             CommandArgument='<%# Eval("IdProducto") %>' 
-                            CssClass="btn btn-warning btn-sm me-1" />
+                            CssClass="btn btn-outline-primary btn-sm me-1" />
 
                         <asp:Button 
                             ID="btnEliminar" 
@@ -57,7 +57,7 @@
                             Text="Eliminar" 
                             CommandName="Eliminar" 
                             CommandArgument='<%# Eval("IdProducto") %>' 
-                            CssClass="btn btn-danger btn-sm"
+                            CssClass="btn btn-outline-danger btn-sm"
                             OnClientClick="return confirm('¿Seguro que desea eliminar este producto?');"/>
                     </ItemTemplate>
                 </asp:TemplateField>
