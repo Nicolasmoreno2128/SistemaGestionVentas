@@ -196,10 +196,6 @@ namespace SistemaGestionVentas.Data
 
                 throw;
             }
-
-
-
-
         }
         public void EliminarProductoLogico (int IdProducto)
         {
@@ -226,6 +222,30 @@ namespace SistemaGestionVentas.Data
                 throw;
             }
 
+
+        }
+        public int ContarProductos()
+        {
+            SqlConnection conexion = new SqlConnection();
+            SqlCommand comando = new SqlCommand();
+
+            try
+            {
+                conexion.ConnectionString = "server=.\\SQLEXPRESS; database=SistemaGestionVentasBD; integrated security=true";
+                comando.CommandType = System.Data.CommandType.Text;
+                comando.CommandText = "SELECT COUNT(*) FROM PRODUCTO WHERE Estado=1;";
+
+                comando.Connection = conexion;
+                conexion.Open();
+                int total = (int)comando.ExecuteScalar();
+                conexion.Close();
+                return total;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
         }
     }

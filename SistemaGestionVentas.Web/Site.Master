@@ -19,7 +19,7 @@
     
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link runat="server" href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 </head>
 <body>
@@ -83,7 +83,7 @@
             </asp:ContentPlaceHolder>
             <hr />
 <footer class="text-muted small">
-    <p>&copy; <%: DateTime.Now.Year %> - Sistema Gestión de Ventas</p>
+    <p>&copy; <%: DateTime.Now.Year %> - Sistema Gestión de Ventas | Proyecto personal desarrollado en ASP.NET Web Forms y SQL Server</p>
 </footer>
         </div>
     </form>
