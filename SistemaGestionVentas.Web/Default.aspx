@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="container mt-4">
+    <div class="container mt-4" style="max-width: 1200px;">
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
@@ -14,11 +14,16 @@
         Nuevo Producto
     </a>
 </div>
+
+        <div class="card shadow-sm">
+            <div class="card-body p-0">
+                 <div class="table-responsive">
+
         <asp:GridView 
             ID="dgvProductos" 
             runat="server" 
             AutoGenerateColumns="false" 
-            CssClass="table table-striped table-bordered table-hover" 
+            CssClass="table table-hover align-middle mb-0" 
             OnRowCommand="dgvProductos_RowCommand">
 
             <Columns>
@@ -35,8 +40,16 @@
                 </asp:TemplateField>
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                 <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
-                <asp:BoundField DataField="Precio" HeaderText="Precio" DataFormatString="{0:C}" HtmlEncode="false" />
-                <asp:BoundField DataField="Stock" HeaderText="Stock" />
+                <asp:BoundField DataField="Precio" HeaderText="Precio" DataFormatString="{0:C}" HtmlEncode="false" /> 
+                <asp:TemplateField HeaderText="Stock">
+                    <ItemTemplate>
+                        <span class='<%# Convert.ToInt32(Eval("Stock")) <= 3 ? "badge bg-danger" :
+                                      Convert.ToInt32(Eval("Stock")) <= 10 ? "badge bg-warning text-dark" :
+                                      "badge bg-success" %>'>
+                            <%# Eval("Stock") %>
+                        </span>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="Medida" HeaderText="Medida" />
                 <asp:BoundField DataField="Marca.Nombre" HeaderText="Marca" />
                 <asp:BoundField DataField="Categoria.Nombre" HeaderText="Categoría" />
@@ -65,6 +78,9 @@
 
         </asp:GridView>
 
+                </div>
+            </div>
+        </div>
     </div>
 
 </asp:Content>

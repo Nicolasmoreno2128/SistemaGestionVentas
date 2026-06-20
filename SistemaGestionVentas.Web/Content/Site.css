@@ -90,9 +90,16 @@ footer {
     border: 1px solid #E2E8F0;
 }
 
-    .module-card .card-title {
-        font-weight: 700;
-    }
+.module-card .card-title {
+    font-weight: 700;
+}
+
+.table thead th {
+    background-color: #1E293B;
+    color: white;
+    border-color: #1E293B;
+}
+
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
 input,

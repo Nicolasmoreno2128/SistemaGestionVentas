@@ -46,12 +46,6 @@ namespace SistemaGestionVentas.Web
 
                     ddlMarca.SelectedValue = producto.IdMarca.ToString();
                     ddlCategoria.SelectedValue = producto.IdCategoria.ToString();
-
-                    Response.Write("Estoy modificando el producto ID: " + id);
-                }
-                else
-                {
-                    Response.Write("Estoy dando de alta un producto nuevo");
                 }
             }
 
